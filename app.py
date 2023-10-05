@@ -43,14 +43,3 @@ def update(id):
         user.update(id,name,year,classe)
         return redirect(url_for('student'))
     return render_template("update.html", student = student)
-
-
-@app.route('/delete/<int:id>', methods=['GET'])
-def delete(id):
-    user = Student()
-    student = user.get_student(id)
-
-    if not student:
-        return redirect(url_for('student'))
-    user.delete(id)
-    return redirect(url_for('student'))
